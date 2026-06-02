@@ -1,59 +1,80 @@
-# TodoApp
+﻿# TaskFlow — Angular Todo List
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.13.
+Простий веб-додаток для ведення списку справ на Angular.
 
-## Development server
+## Опис проекту
 
-To start a local development server, run:
+Цей додаток реалізує базові можливості менеджера завдань зі збереженням даних через публічний API JSONPlaceholder. Користувач може додавати, редагувати, видаляти та позначати завдання як виконані.
 
-```bash
-ng serve
-```
+## Функціонал
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- Додавання нових завдань
+- Редагування існуючих завдань
+- Позначення завдань як виконаних / невиконаних
+- Видалення завдань
+- Фільтрація: `Всі`, `Активні`, `Виконані`
+- Сортування за пріоритетом: `низький`, `середній`, `високий`
+- Підключення до симульованого бекенду через `JSONPlaceholder`
 
-## Code scaffolding
+## Технічний стек
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- Angular 21
+- TypeScript
+- RxJS
+- Standalone-компоненти
+- `@angular/common/http` для HTTP-запитів
+- `zone.js` для конфігурації Angular
 
-```bash
-ng generate component component-name
-```
+## Структура ключових файлів
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- `src/app/app.ts` — кореневий компонент
+- `src/app/components/todo-list/todo-list.component.ts` — контейнер списку задач
+- `src/app/components/todo-form/todo-form.component.ts` — форма додавання / редагування задач
+- `src/app/components/todo-item/todo-item.component.ts` — віджет одного завдання
+- `src/app/components/filter-bar/filter-bar.component.ts` — панель фільтрів та сортування
+- `src/app/services/todo.service.ts` — сервіс для роботи з JSONPlaceholder API
+- `src/app/models/todo.model.ts` — типи задач та пріоритетів
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+## Запуск локально
 
 ```bash
-ng test
+npm install
+npm start
 ```
 
-## Running end-to-end tests
+Потім відкрийте у браузері `http://localhost:4200`.
 
-For end-to-end (e2e) testing, run:
+## Побудова проекту
 
 ```bash
-ng e2e
+npm run build
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Результат збірки знаходиться в папці `dist/todo-app`.
 
-## Additional Resources
+## Підготовка для GitHub
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+1. Ініціалізуйте репозиторій Git (якщо ще не зроблено):
+   ```bash
+git init
+```
+2. Додайте всі файли до коміту:
+   ```bash
+git add .
+```
+3. Зробіть початковий коміт:
+   ```bash
+git commit -m "Initial TaskFlow Angular todo app"
+```
+4. Створіть репозиторій на GitHub і додайте віддалений URL:
+   ```bash
+git remote add origin https://github.com/<your-username>/<repo-name>.git
+```
+5. Запуште на GitHub:
+   ```bash
+git push -u origin main
+```
+
+## Коментар
+
+Проект готовий як тестове завдання на Angular. Якщо потрібно, можу додатково підготувати короткий опис для GitHub-сумки або допомогти з деплоєм на GitHub Pages чи Vercel.

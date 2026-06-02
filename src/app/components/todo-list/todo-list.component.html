@@ -1,0 +1,44 @@
+<div class="todo-list-container">
+  <app-todo-form
+    [editingTodo]="editingTodo"
+    (addTodo)="onAddTodo($event)"
+    (updateTodo)="onUpdateTodo($event)"
+    (cancelEdit)="onCancelEdit()"
+  ></app-todo-form>
+
+  <app-filter-bar
+    [currentFilter]="currentFilter"
+    [currentSort]="currentSort"
+    [totalCount]="totalCount"
+    [activeCount]="activeCount"
+    [completedCount]="completedCount"
+    (filterChange)="onFilterChange($event)"
+    (sortChange)="onSortChange($event)"
+  ></app-filter-bar>
+
+  <!-- Loading state -->
+  <div class="loading-state" *ngIf="loading">
+    <div class="spinner"></div>
+    <span>Завантаження завдань...</span>
+  </div>
+
+  <!-- Empty state -->
+  <div class="empty-state" *ngIf="!loading && filteredTodos.length === 0">
+    <div class="empty-icon">📋</div>
+    <p class="empty-title">Завдань немає</p>
+    <p class="empty-subtitle">
+      {{ currentFilter === 'all' ? 'Додайте перше завдання вище' : 'Немає завдань у цій категорії' }}
+    </p>
+  </div>
+
+  <!-- Todo list -->
+  <div class="todos-wrapper" *ngIf="!loading && filteredTodos.length > 0">
+    <app-todo-item
+      *ngFor="let todo of filteredTodos; trackBy: trackByFn"
+      [todo]="todo"
+      (toggle)="onToggle($event)"
+      (delete)="onDelete($event)"
+      (edit)="onEdit($event)"
+    ></app-todo-item>
+  </div>
+</div>
